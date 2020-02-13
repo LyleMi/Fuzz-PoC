@@ -1,5 +1,7 @@
 # Description
 
+Function ``read_textobject`` use ``strlen(s)`` to get length of ``s`` in line 1355. However, when ``s`` starts with ``\x00``, will cause an oob read.
+
 see asan output in ``asan.txt``.
 
 # Step to reproduce
@@ -11,4 +13,7 @@ autoreconf
 make
 ./fig2dev/fig2dev -L box ./case
 ```
-    
+
+# Reference
+
+https://sourceforge.net/p/mcj/tickets/59/

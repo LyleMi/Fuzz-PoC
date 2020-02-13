@@ -14,3 +14,6 @@ make
 ./fig2dev/fig2dev -L box ./case
 ```
     
+# Reference
+
+https://sourceforge.net/p/mcj/tickets/60/

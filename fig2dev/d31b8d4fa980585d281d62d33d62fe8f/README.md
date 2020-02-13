@@ -1,6 +1,6 @@
 # Description
 
-Function ``get_line`` use ``strlen(buf)`` to get length of buf. However, when ``buf`` starts with ``\x00``, will cause an oob read.
+bound check not correct, will cause oob write in function ``read_objects`` line 459,
 
 see asan output in ``asan.txt``.
 
@@ -13,4 +13,7 @@ autoreconf
 make
 ./fig2dev/fig2dev -L box ./case
 ```
-    
+
+# Reference
+
+https://sourceforge.net/p/mcj/tickets/61/

@@ -1,2 +1,3 @@
-# advFuzz-PoC
-PoCs discovered through fuzzing
+# Fuzz-PoC
+
+PoCs discovered through fuzzing.
