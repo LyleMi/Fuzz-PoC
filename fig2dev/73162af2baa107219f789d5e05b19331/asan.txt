@@ -1,0 +1,88 @@
+Invalid color definition: 	0 01 , setting to black (#00000).
+Invalid color definition: 	0 057, setting to black (#00000).
+Cannot locate user color 57, using default color at line 16.
+Cannot locate user color 57, using default color at line 24.
+Invalid forward arrow at line 37.
+
+=================================================================
+==9880==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 80 byte(s) in 1 object(s) allocated from:
+    #0 0x7fdfb2172602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x4285a2 in rpl_malloc ../fig2dev/lib/malloc.c:32
+    #2 0x41b6ca in read_compoundobject /home/ubuntu/fig2dev/fig2dev/read.c:631
+    #3 0x419a8c in read_objects /home/ubuntu/fig2dev/fig2dev/read.c:440
+    #4 0x418793 in readfp_fig /home/ubuntu/fig2dev/fig2dev/read.c:172
+    #5 0x41867c in read_fig /home/ubuntu/fig2dev/fig2dev/read.c:142
+    #6 0x410ea1 in main /home/ubuntu/fig2dev/fig2dev/fig2dev.c:422
+    #7 0x7fdfb1a2782f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+Direct leak of 10 byte(s) in 2 object(s) allocated from:
+    #0 0x7fdfb2172602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x4285a2 in rpl_malloc ../fig2dev/lib/malloc.c:32
+    #2 0x422d31 in attach_comments /home/ubuntu/fig2dev/fig2dev/read.c:1483
+    #3 0x420e37 in read_splineobject /home/ubuntu/fig2dev/fig2dev/read.c:1225
+    #4 0x419648 in read_objects /home/ubuntu/fig2dev/fig2dev/read.c:395
+    #5 0x418793 in readfp_fig /home/ubuntu/fig2dev/fig2dev/read.c:172
+    #6 0x41867c in read_fig /home/ubuntu/fig2dev/fig2dev/read.c:142
+    #7 0x410ea1 in main /home/ubuntu/fig2dev/fig2dev/fig2dev.c:422
+    #8 0x7fdfb1a2782f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+Indirect leak of 120 byte(s) in 1 object(s) allocated from:
+    #0 0x7fdfb2172602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x4285a2 in rpl_malloc ../fig2dev/lib/malloc.c:32
+    #2 0x41a6a7 in read_arcobject /home/ubuntu/fig2dev/fig2dev/read.c:541
+    #3 0x41bc22 in read_compoundobject /home/ubuntu/fig2dev/fig2dev/read.c:702
+    #4 0x419a8c in read_objects /home/ubuntu/fig2dev/fig2dev/read.c:440
+    #5 0x418793 in readfp_fig /home/ubuntu/fig2dev/fig2dev/read.c:172
+    #6 0x41867c in read_fig /home/ubuntu/fig2dev/fig2dev/read.c:142
+    #7 0x410ea1 in main /home/ubuntu/fig2dev/fig2dev/fig2dev.c:422
+    #8 0x7fdfb1a2782f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+Indirect leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x7fdfb2172602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x4285a2 in rpl_malloc ../fig2dev/lib/malloc.c:32
+    #2 0x422ccc in attach_comments /home/ubuntu/fig2dev/fig2dev/read.c:1481
+    #3 0x41b812 in read_compoundobject /home/ubuntu/fig2dev/fig2dev/read.c:639
+    #4 0x419a8c in read_objects /home/ubuntu/fig2dev/fig2dev/read.c:440
+    #5 0x418793 in readfp_fig /home/ubuntu/fig2dev/fig2dev/read.c:172
+    #6 0x41867c in read_fig /home/ubuntu/fig2dev/fig2dev/read.c:142
+    #7 0x410ea1 in main /home/ubuntu/fig2dev/fig2dev/fig2dev.c:422
+    #8 0x7fdfb1a2782f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+Indirect leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x7fdfb2172602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x4285a2 in rpl_malloc ../fig2dev/lib/malloc.c:32
+    #2 0x422ccc in attach_comments /home/ubuntu/fig2dev/fig2dev/read.c:1481
+    #3 0x41b483 in read_arcobject /home/ubuntu/fig2dev/fig2dev/read.c:616
+    #4 0x41bc22 in read_compoundobject /home/ubuntu/fig2dev/fig2dev/read.c:702
+    #5 0x419a8c in read_objects /home/ubuntu/fig2dev/fig2dev/read.c:440
+    #6 0x418793 in readfp_fig /home/ubuntu/fig2dev/fig2dev/read.c:172
+    #7 0x41867c in read_fig /home/ubuntu/fig2dev/fig2dev/read.c:142
+    #8 0x410ea1 in main /home/ubuntu/fig2dev/fig2dev/fig2dev.c:422
+    #9 0x7fdfb1a2782f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+Indirect leak of 3 byte(s) in 1 object(s) allocated from:
+    #0 0x7fdfb2172602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x4285a2 in rpl_malloc ../fig2dev/lib/malloc.c:32
+    #2 0x422d31 in attach_comments /home/ubuntu/fig2dev/fig2dev/read.c:1483
+    #3 0x41b812 in read_compoundobject /home/ubuntu/fig2dev/fig2dev/read.c:639
+    #4 0x419a8c in read_objects /home/ubuntu/fig2dev/fig2dev/read.c:440
+    #5 0x418793 in readfp_fig /home/ubuntu/fig2dev/fig2dev/read.c:172
+    #6 0x41867c in read_fig /home/ubuntu/fig2dev/fig2dev/read.c:142
+    #7 0x410ea1 in main /home/ubuntu/fig2dev/fig2dev/fig2dev.c:422
+    #8 0x7fdfb1a2782f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+Indirect leak of 3 byte(s) in 1 object(s) allocated from:
+    #0 0x7fdfb2172602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x4285a2 in rpl_malloc ../fig2dev/lib/malloc.c:32
+    #2 0x422d31 in attach_comments /home/ubuntu/fig2dev/fig2dev/read.c:1483
+    #3 0x41b483 in read_arcobject /home/ubuntu/fig2dev/fig2dev/read.c:616
+    #4 0x41bc22 in read_compoundobject /home/ubuntu/fig2dev/fig2dev/read.c:702
+    #5 0x419a8c in read_objects /home/ubuntu/fig2dev/fig2dev/read.c:440
+    #6 0x418793 in readfp_fig /home/ubuntu/fig2dev/fig2dev/read.c:172
+    #7 0x41867c in read_fig /home/ubuntu/fig2dev/fig2dev/read.c:142
+    #8 0x410ea1 in main /home/ubuntu/fig2dev/fig2dev/fig2dev.c:422
+    #9 0x7fdfb1a2782f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+SUMMARY: AddressSanitizer: 248 byte(s) leaked in 8 allocation(s).

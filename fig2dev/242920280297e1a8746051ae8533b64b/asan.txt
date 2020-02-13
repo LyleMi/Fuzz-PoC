@@ -1,0 +1,58 @@
+An open polygon at line 18 - close it.
+=================================================================
+==10000==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffd8e1335dd at pc 0x7ff9f64492d5 bp 0x7ffd8e1334b0 sp 0x7ffd8e132c58
+READ of size 1 at 0x7ffd8e1335dd thread T0
+    #0 0x7ff9f64492d4  (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x472d4)
+    #1 0x421d18 in read_textobject /home/ubuntu/fig2dev/fig2dev/read.c:1356
+    #2 0x41bce7 in read_compoundobject /home/ubuntu/fig2dev/fig2dev/read.c:711
+    #3 0x419a8c in read_objects /home/ubuntu/fig2dev/fig2dev/read.c:440
+    #4 0x418793 in readfp_fig /home/ubuntu/fig2dev/fig2dev/read.c:172
+    #5 0x41867c in read_fig /home/ubuntu/fig2dev/fig2dev/read.c:142
+    #6 0x410ea1 in main /home/ubuntu/fig2dev/fig2dev/fig2dev.c:422
+    #7 0x7ff9f5d4f82f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #8 0x402a08 in _start (/home/ubuntu/fig2dev/fig2dev/fig2dev+0x402a08)
+
+Address 0x7ffd8e1335dd is located in stack of thread T0 at offset 221 in frame
+    #0 0x4216b7 in read_textobject /home/ubuntu/fig2dev/fig2dev/read.c:1304
+
+  This frame has 5 object(s):
+    [32, 36) 'num'
+    [96, 104) 't'
+    [160, 162) 'junk'
+    [224, 8416) 's' <== Memory access at offset 221 underflows this variable
+    [8448, 16640) 's_temp'
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism or swapcontext
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow ??:0 ??
+Shadow bytes around the buggy address:
+  0x100031c1e660: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100031c1e670: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100031c1e680: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100031c1e690: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100031c1e6a0: f1 f1 f1 f1 04 f4 f4 f4 f2 f2 f2 f2 00 f4 f4 f4
+=>0x100031c1e6b0: f2 f2 f2 f2 02 f4 f4 f4 f2 f2 f2[f2]00 00 00 00
+  0x100031c1e6c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100031c1e6d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100031c1e6e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100031c1e6f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100031c1e700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==10000==ABORTING

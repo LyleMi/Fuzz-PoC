@@ -1,0 +1,13 @@
+ASAN:SIGSEGV
+=================================================================
+==10028==ERROR: AddressSanitizer: SEGV on unknown address 0x0000007f6000 (pc 0x000000419bfd bp 0x7ffd95aa56b0 sp 0x7ffd95aa5560 T0)
+    #0 0x419bfc in read_objects /home/ubuntu/fig2dev/fig2dev/read.c:459
+    #1 0x418793 in readfp_fig /home/ubuntu/fig2dev/fig2dev/read.c:172
+    #2 0x41867c in read_fig /home/ubuntu/fig2dev/fig2dev/read.c:142
+    #3 0x410ea1 in main /home/ubuntu/fig2dev/fig2dev/fig2dev.c:422
+    #4 0x7f9161a5182f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #5 0x402a08 in _start (/home/ubuntu/fig2dev/fig2dev/fig2dev+0x402a08)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/ubuntu/fig2dev/fig2dev/read.c:459 read_objects
+==10028==ABORTING

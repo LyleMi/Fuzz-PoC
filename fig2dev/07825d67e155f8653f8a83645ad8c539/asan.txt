@@ -1,0 +1,57 @@
+Cannot locate user color 77, using default color at line 13.
+Cannot locate user color 862, using default color at line 13.
+Cannot locate user color 711, using default color at line 15.
+Cannot locate user color 711, using default color at line 17.
+Invalid color number -5 at line 19, using default color.
+Cannot locate user color 71, using default color at line 19.
+Cannot locate user color 77, using default color at line 24.
+Cannot locate user color 862, using default color at line 24.
+Cannot locate user color 77, using default color at line 26.
+Cannot locate user color 862, using default color at line 26.
+=================================================================
+==9885==ERROR: AddressSanitizer: global-buffer-overflow on address 0x0000007e297f at pc 0x000000422f1e bp 0x7ffe3c818ad0 sp 0x7ffe3c818ac0
+READ of size 1 at 0x0000007e297f thread T0
+    #0 0x422f1d in get_line /home/ubuntu/fig2dev/fig2dev/read.c:1512
+    #1 0x41be8f in read_compoundobject /home/ubuntu/fig2dev/fig2dev/read.c:648
+    #2 0x419a8c in read_objects /home/ubuntu/fig2dev/fig2dev/read.c:440
+    #3 0x418793 in readfp_fig /home/ubuntu/fig2dev/fig2dev/read.c:172
+    #4 0x41867c in read_fig /home/ubuntu/fig2dev/fig2dev/read.c:142
+    #5 0x410ea1 in main /home/ubuntu/fig2dev/fig2dev/fig2dev.c:422
+    #6 0x7f7855f9882f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #7 0x402a08 in _start (/home/ubuntu/fig2dev/fig2dev/fig2dev+0x402a08)
+
+0x0000007e297f is located 59 bytes to the right of global variable 'gif_colnum' defined in 'read.c:80:13' (0x7e2940) of size 4
+0x0000007e297f is located 1 bytes to the left of global variable 'buf' defined in 'read.c:81:14' (0x7e2980) of size 8192
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/ubuntu/fig2dev/fig2dev/read.c:1512 get_line
+Shadow bytes around the buggy address:
+  0x0000800f44d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0000800f44e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0000800f44f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0000800f4500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0000800f4510: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0000800f4520: 00 f9 f9 f9 f9 f9 f9 f9 04 f9 f9 f9 f9 f9 f9[f9]
+  0x0000800f4530: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0000800f4540: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0000800f4550: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0000800f4560: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0000800f4570: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==9885==ABORTING

@@ -1,0 +1,16 @@
+ASAN:SIGSEGV
+=================================================================
+==9913==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x00000041367c bp 0x7ffde91b2f70 sp 0x7ffde91b2f40 T0)
+    #0 0x41367b in free_splinestorage /home/ubuntu/fig2dev/fig2dev/free.c:127
+    #1 0x420c93 in read_splineobject /home/ubuntu/fig2dev/fig2dev/read.c:1208
+    #2 0x41b9f9 in read_compoundobject /home/ubuntu/fig2dev/fig2dev/read.c:677
+    #3 0x419a8c in read_objects /home/ubuntu/fig2dev/fig2dev/read.c:440
+    #4 0x418793 in readfp_fig /home/ubuntu/fig2dev/fig2dev/read.c:172
+    #5 0x41867c in read_fig /home/ubuntu/fig2dev/fig2dev/read.c:142
+    #6 0x410ea1 in main /home/ubuntu/fig2dev/fig2dev/fig2dev.c:422
+    #7 0x7fe31618c82f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #8 0x402a08 in _start (/home/ubuntu/fig2dev/fig2dev/fig2dev+0x402a08)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/ubuntu/fig2dev/fig2dev/free.c:127 free_splinestorage
+==9913==ABORTING
