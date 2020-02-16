@@ -1,0 +1,54 @@
+=================================================================
+==18196==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60600000eff5 at pc 0x000000423f82 bp 0x7fff18d25e80 sp 0x7fff18d25e70
+READ of size 1 at 0x60600000eff5 thread T0
+    #0 0x423f81 in read_textobject /home/ubuntu/mcj-fig2dev/fig2dev/read.c:1532
+    #1 0x419c00 in read_objects /home/ubuntu/mcj-fig2dev/fig2dev/read.c:461
+    #2 0x4186c1 in readfp_fig /home/ubuntu/mcj-fig2dev/fig2dev/read.c:150
+    #3 0x418547 in read_fig /home/ubuntu/mcj-fig2dev/fig2dev/read.c:122
+    #4 0x41076a in main /home/ubuntu/mcj-fig2dev/fig2dev/fig2dev.c:423
+    #5 0x7f850985882f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #6 0x402a18 in _start (/home/ubuntu/mcj-fig2dev/fig2dev/fig2dev+0x402a18)
+
+0x60600000eff5 is located 0 bytes to the right of 53-byte region [0x60600000efc0,0x60600000eff5)
+allocated by thread T0 here:
+    #0 0x7f8509fa3961 in realloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98961)
+    #1 0x4239f5 in read_textobject /home/ubuntu/mcj-fig2dev/fig2dev/read.c:1515
+    #2 0x419c00 in read_objects /home/ubuntu/mcj-fig2dev/fig2dev/read.c:461
+    #3 0x4186c1 in readfp_fig /home/ubuntu/mcj-fig2dev/fig2dev/read.c:150
+    #4 0x418547 in read_fig /home/ubuntu/mcj-fig2dev/fig2dev/read.c:122
+    #5 0x41076a in main /home/ubuntu/mcj-fig2dev/fig2dev/fig2dev.c:423
+    #6 0x7f850985882f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/ubuntu/mcj-fig2dev/fig2dev/read.c:1532 read_textobject
+Shadow bytes around the buggy address:
+  0x0c0c7fff9da0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9dc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9dd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9de0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c0c7fff9df0: fa fa fa fa fa fa fa fa 00 00 00 00 00 00[05]fa
+  0x0c0c7fff9e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9e20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9e30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9e40: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==18196==ABORTING

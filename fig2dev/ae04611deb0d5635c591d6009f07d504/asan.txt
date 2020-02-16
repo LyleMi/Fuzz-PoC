@@ -1,0 +1,53 @@
+=================================================================
+==18199==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60600000eff8 at pc 0x7f835c9b92bb bp 0x7ffec4f4ccc0 sp 0x7ffec4f4c468
+READ of size 57 at 0x60600000eff8 thread T0
+    #0 0x7f835c9b92ba in strchr (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x712ba)
+    #1 0x40796b in text_bound /home/ubuntu/mcj-fig2dev/fig2dev/bound.c:592
+    #2 0x40453c in compound_bound /home/ubuntu/mcj-fig2dev/fig2dev/bound.c:351
+    #3 0x4109fd in main /home/ubuntu/mcj-fig2dev/fig2dev/fig2dev.c:454
+    #4 0x7f835c29582f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #5 0x402a18 in _start (/home/ubuntu/mcj-fig2dev/fig2dev/fig2dev+0x402a18)
+
+0x60600000eff8 is located 0 bytes to the right of 56-byte region [0x60600000efc0,0x60600000eff8)
+allocated by thread T0 here:
+    #0 0x7f835c9e0602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x423fec in read_textobject /home/ubuntu/mcj-fig2dev/fig2dev/read.c:1557
+    #2 0x419c00 in read_objects /home/ubuntu/mcj-fig2dev/fig2dev/read.c:461
+    #3 0x4186c1 in readfp_fig /home/ubuntu/mcj-fig2dev/fig2dev/read.c:150
+    #4 0x418547 in read_fig /home/ubuntu/mcj-fig2dev/fig2dev/read.c:122
+    #5 0x41076a in main /home/ubuntu/mcj-fig2dev/fig2dev/fig2dev.c:423
+    #6 0x7f835c29582f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 strchr
+Shadow bytes around the buggy address:
+  0x0c0c7fff9da0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9dc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9dd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9de0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c0c7fff9df0: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00[fa]
+  0x0c0c7fff9e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9e20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9e30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff9e40: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==18199==ABORTING
