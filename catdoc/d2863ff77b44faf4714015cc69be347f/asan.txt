@@ -1,0 +1,54 @@
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+=================================================================
+==17180==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x611000009ade at pc 0x000000405ac6 bp 0x7fffffffdf20 sp 0x7fffffffdf10
+READ of size 1 at 0x611000009ade thread T0
+    #0 0x405ac5 in copy_unicode_string /home/ubuntu/catdoc/src/xlsparse.c:493
+    #1 0x406a26 in parse_sst /home/ubuntu/catdoc/src/xlsparse.c:775
+    #2 0x4041a2 in process_item /home/ubuntu/catdoc/src/xlsparse.c:142
+    #3 0x40400c in do_table /home/ubuntu/catdoc/src/xlsparse.c:116
+    #4 0x4029d5 in main /home/ubuntu/catdoc/src/xls2csv.c:167
+    #5 0x7ffff67b782f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #6 0x401d18 in _start (/home/ubuntu/catdoc/src/xls2csv+0x401d18)
+
+0x611000009ade is located 0 bytes to the right of 222-byte region [0x611000009a00,0x611000009ade)
+allocated by thread T0 here:
+    #0 0x7ffff6f02602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x404481 in process_item /home/ubuntu/catdoc/src/xlsparse.c:196
+    #2 0x40400c in do_table /home/ubuntu/catdoc/src/xlsparse.c:116
+    #3 0x4029d5 in main /home/ubuntu/catdoc/src/xls2csv.c:167
+    #4 0x7ffff67b782f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/ubuntu/catdoc/src/xlsparse.c:493 copy_unicode_string
+Shadow bytes around the buggy address:
+  0x0c227fff9300: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c227fff9310: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c227fff9320: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c227fff9330: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c227fff9340: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c227fff9350: 00 00 00 00 00 00 00 00 00 00 00[06]fa fa fa fa
+  0x0c227fff9360: fa fa fa fa fa fa fa fa fd fd fd fd fd fd fd fd
+  0x0c227fff9370: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0c227fff9380: fd fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c227fff9390: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0c227fff93a0: fd fd fd fd fd fd fd fd fd fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==17180==ABORTING
