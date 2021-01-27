@@ -1,0 +1,51 @@
+=================================================================
+==20996==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x61400000fdf4 at pc 0x00000040ba83 bp 0x7fff825bf220 sp 0x7fff825bf210
+READ of size 1 at 0x61400000fdf4 thread T0
+    #0 0x40ba82 in getlong /home/ubuntu/catdoc-0.95/src/numutils.c:22
+    #1 0x40c3c5 in ole_init /home/ubuntu/catdoc-0.95/src/ole.c:163
+    #2 0x404ef5 in analyze_format /home/ubuntu/catdoc-0.95/src/analyze.c:58
+    #3 0x402acc in main /home/ubuntu/catdoc-0.95/src/catdoc.c:180
+    #4 0x7f860a36c83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #5 0x401c78 in _start (/home/ubuntu/catdoc-0.95/build/bin/catdoc+0x401c78)
+
+0x61400000fdf4 is located 0 bytes to the right of 436-byte region [0x61400000fc40,0x61400000fdf4)
+allocated by thread T0 here:
+    #0 0x7f860a7ae602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x40c127 in ole_init /home/ubuntu/catdoc-0.95/src/ole.c:123
+    #2 0x404ef5 in analyze_format /home/ubuntu/catdoc-0.95/src/analyze.c:58
+    #3 0x402acc in main /home/ubuntu/catdoc-0.95/src/catdoc.c:180
+    #4 0x7f860a36c83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/ubuntu/catdoc-0.95/src/numutils.c:22 getlong
+Shadow bytes around the buggy address:
+  0x0c287fff9f60: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c287fff9f70: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c287fff9f80: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0x0c287fff9f90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c287fff9fa0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c287fff9fb0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00[04]fa
+  0x0c287fff9fc0: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0x0c287fff9fd0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c287fff9fe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c287fff9ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 fa fa
+  0x0c287fffa000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==20996==ABORTING

@@ -1,0 +1,13 @@
+ASAN:SIGSEGV
+=================================================================
+==20329==ERROR: AddressSanitizer: SEGV on unknown address 0x60200002c630 (pc 0x00000040ba83 bp 0x7ffe62bcb900 sp 0x7ffe62bcb8f0 T0)
+    #0 0x40ba82 in getlong /home/ubuntu/catdoc-0.95/src/numutils.c:22
+    #1 0x40c9bd in ole_init /home/ubuntu/catdoc-0.95/src/ole.c:254
+    #2 0x404ef5 in analyze_format /home/ubuntu/catdoc-0.95/src/analyze.c:58
+    #3 0x402acc in main /home/ubuntu/catdoc-0.95/src/catdoc.c:180
+    #4 0x7fb960b2683f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #5 0x401c78 in _start (/home/ubuntu/catdoc-0.95/build/bin/catdoc+0x401c78)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/ubuntu/catdoc-0.95/src/numutils.c:22 getlong
+==20329==ABORTING

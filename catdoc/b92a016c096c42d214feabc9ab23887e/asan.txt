@@ -1,0 +1,12 @@
+=================================================================
+==19233==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x00000040da6a bp 0x7fffd81f1780 sp 0x7fffd81f1750 T0)
+    #0 0x40da69 in calcFileBlockOffset /home/ubuntu/catdoc-0.95/src/ole.c:450
+    #1 0x40dcc9 in ole_read /home/ubuntu/catdoc-0.95/src/ole.c:493
+    #2 0x404f9c in analyze_format /home/ubuntu/catdoc-0.95/src/analyze.c:64
+    #3 0x402acc in main /home/ubuntu/catdoc-0.95/src/catdoc.c:180
+    #4 0x7f9e5e63d83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #5 0x401c78 in _start (/home/ubuntu/catdoc-0.95/build/bin/catdoc+0x401c78)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/ubuntu/catdoc-0.95/src/ole.c:450 calcFileBlockOffset
+==19233==ABORTING
